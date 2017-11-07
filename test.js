@@ -1,5 +1,5 @@
 const assert = require('assert');
-const romanNumerals = require('./romanNumerals.js');
+const romanNumerals = require('./romanNumerals');
 
 describe('romanNumerals', function(){
     describe('generate()', function(){
@@ -11,7 +11,7 @@ describe('romanNumerals', function(){
         tests.forEach(function(test){
             it(`generates the expected numeral ${test.expected} for number ${test.number}`, function() {
                 //Arrange
-                const generator = new romanNumerals.romanNumerals();
+                const generator = new romanNumerals();
 
                 //Act
                 let result = generator.generate(test.number);

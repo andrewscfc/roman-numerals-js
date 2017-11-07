@@ -6,4 +6,4 @@ RomanNumerals = function(){
    return self;
 }
 
-exports.romanNumerals = RomanNumerals;
+module.exports = RomanNumerals;
