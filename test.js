@@ -1,13 +1,6 @@
 const assert = require('assert');
 const romanNumerals = require('./romanNumerals');
 
-const ValuePair = function(number, expected){
-    return {
-        number : number,
-        expected : expected
-    };
-}
-
 describe('romanNumerals', function(){
     describe('validValues', function(){
         describe('generate()', function(){
@@ -32,7 +25,7 @@ describe('romanNumerals', function(){
             ];
     
             tests.forEach(function(test){
-                it(`generates the expected numeral ${test.expected} for number ${test.number}`, function() {
+                it(`generates the expected numeral ${test[1]} for number ${test[0]}`, function() {
                     //Arrange
     
                     //Act
@@ -44,5 +37,66 @@ describe('romanNumerals', function(){
             });
         });
     });    
+});
+
+describe('romanNumerals', function(){
+    describe('values out of range', function(){
+        describe('generate()', function(){
+            let values = [Number.MIN_SAFE_INTEGER, -999, 0, 4000, 10000, Number.MAX_SAFE_INTEGER];
+
+            values.forEach(function(value){
+                it(`should throw an error as ${value} out of range`, function(){
+                    //Arrange
+
+                    //Act
+                    let actToAssert = function(){ romanNumerals.generate(value);};
+
+                    //Assert
+                    assert.throws(actToAssert, 'argument number must be between 1 and 3999', 'because number is out of range');
+                });
+            })
+
+        })
+    })
+});
+
+describe('romanNumerals', function(){
+    describe('values of wrong type', function(){
+        describe('generate()', function(){
+            let values = ['22', 2.4, function(){}, 'abc'];
+
+            values.forEach(function(value){
+                it(`should throw an error as ${value} is incorrect type`, function(){
+                    //Arrange
+
+                    //Act
+                    let actToAssert = function(){ romanNumerals.generate(value);};
+
+                    //Assert
+                    assert.throws(actToAssert, "argument number must be of type: 'whole number'", 'because number incorrect type');
+                });
+            });
+        });
+    });
+});
+
+describe('romanNumerals', function(){
+    describe('values null and undefined', function(){
+        describe('generate()', function(){
+            let values = [null, undefined];
+
+            values.forEach(function(value){
+                it(`should throw an error as value is ${value}`, function(){
+                    //Arrange
+
+                    //Act
+                    let actToAssert = function(){ romanNumerals.generate(value);};
+
+                    //Assert
+                    assert.throws(actToAssert, 'argument number must be provided', 'because number argument is missing');
+                });
+            });
+        });
+    });
 });
 
