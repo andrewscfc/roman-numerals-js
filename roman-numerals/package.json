@@ -1,11 +1,12 @@
 {
-  "name": "roman-numerals-andrew",
+  "name": " ",
   "version": "1.0.0",
   "description": "Generates roman numerals as per BBC specification",
   "main": "romanNumerals.js",
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "should" :"latest"
   },
   "scripts": {
     "test": "mocha"

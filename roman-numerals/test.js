@@ -1,4 +1,5 @@
 const assert = require('assert');
+const should = require('should');
 const romanNumerals = require('./romanNumerals');
 
 describe('romanNumerals', function(){
@@ -97,6 +98,44 @@ describe('romanNumerals', function(){
                 });
             });
         });
+    });
+});
+
+describe('Promise', function() {
+    describe('then()', function(){
+        it('then can be called multiple times, same success returned', function(){
+            //Arrange
+            let originalMillis;
+            let actualMillis = [];
+
+            let promise1 = new Promise(function (resolve, reject){
+                setTimeout(function(){
+                    let time = new Date();
+                    resolve(time.getMilliseconds());
+                }, 1000);
+            });
+
+            return promise1
+            .then(function(millis){
+                originalMillis = millis;
+            })
+            .then(function(){
+                //Act          
+                for (var index = 0; index < 5; index++) {
+                    promise1.then(function(millis){
+                        actualMillis.push(millis)    
+                    });
+                }
+            })
+            .then(function(){
+                //Assert
+                actualMillis.forEach(function(item){
+                    assert.equal(originalMillis, item);
+                });
+            });
+            
+            
+        })
     });
 });
 
