@@ -5,11 +5,16 @@
             <h1>The Numeral Generator</h1>
             <form class="form-group">
                 <div>
-                    <label>Please enter a whole number:</label>
-                    <input data-bind="text: number" class="form-control" type="number"/>
-                    <button data-bind="click: generateNumeral" type="submit" class="btn btn-primary">Get Numeral</button>
+                    <label class="mt-2 mb-2">Please enter a whole number:</label>
+                    <input data-bind="value: number" class="form-control" type="number"/>
+                    <button data-bind="click: generateNumeral" type="submit" class="btn btn-primary mt-2 mb-2">Get Numeral</button>
+
+                    <!-- ko if: numeral -->
+                    <div class="alert alert-primary mt-2 mb-2" data-bind="text: numeral">  
+                    </div>
+                    <!-- /ko -->
                 </div>
-               
+                <div data-bind = "html : error"></div>
             </form>
 
         </div>

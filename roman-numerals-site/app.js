@@ -20,9 +20,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.set('view engine', 'jade');
 
 app.use('/', index);
 app.use('/users', users);
+
+app.get('/api/romanNumerals', function(req, res){
+  const number = parseInt(req.query.number);
+  const numeral = romanNumerals.generate(number);
+
+  res.statusCode = 200;
+  res.send(numeral);
+  res.end();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,13 +52,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.get('api/romanNumeral/:number', function(req, res){
-  const number = req.params.number;
-  const numeral = romanNumerals.generate(number);
 
-  res.statusCode = 200;
-  res.send(numeral);
-  res.end();
-});
 
 module.exports = app;
