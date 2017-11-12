@@ -1,0 +1,21 @@
+<html>
+    <head></head>
+    <body>
+        <div class="container">
+            <h1>The Numeral Generator</h1>
+            <form class="form-group">
+                <div>
+                    <label>Please enter a whole number:</label>
+                    <input data-bind="text: number" class="form-control" type="number"/>
+                    <button data-bind="click: generateNumeral" type="submit" class="btn btn-primary">Get Numeral</button>
+                </div>
+               
+            </form>
+
+        </div>
+    </body>    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <script src="javascripts/page.js"></script>
+</html>
