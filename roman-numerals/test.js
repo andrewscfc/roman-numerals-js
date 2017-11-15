@@ -1,3 +1,5 @@
+"use strict"
+
 const assert = require('assert');
 const should = require('should');
 const romanNumerals = require('./romanNumerals');
@@ -137,5 +139,92 @@ describe('Promise', function() {
             
         })
     });
+
+    describe('prototypes', function(){
+        it('should sat hello', function(){
+            //Arrange
+            let A = {
+                getHello : function(){
+                    return 'hello';
+                }
+            };
+    
+            //Act
+            var a = Object.create(A);
+    
+            //Assert
+            assert.equal('hello' ,a.getHello());        
+        })
+    });
+
+    describe('prototypes', function(){
+        it('should create suitable class hierarchy', function(){
+            //Arrange
+            let Vehicle = {
+                move : function(){
+                    return 'Vehicle';
+                }
+            };
+
+            let lorry = Object.create(Vehicle);
+            lorry.move = function() {
+                return 'Lorry';
+            };
+
+            let car = Object.create(Vehicle);
+            car.move = function() {
+                return 'Car';
+            };
+
+            let brokenCar = Object.create(Vehicle);
+            
+            //Act
+            let carMove = car.move();
+            let lorryMove = lorry.move();
+            let brokenCarMove = brokenCar.move();
+
+            //Assert
+            assert.equal('Car', carMove);
+            assert.equal('Lorry', lorryMove);
+            assert.equal('Vehicle', brokenCarMove);      
+            
+        });
+    });
+
+    describe('traditional', function(){
+        it('should create suitable class hierarchy', function(){
+            //Arrange
+            function Vehicle(){
+                let self = this;
+                self.move = function(){
+                    return 'Vehicle';
+                };
+                return self;
+            };
+
+            let lorry = new Vehicle();
+            lorry.move = function() {
+                return 'Lorry';
+            };
+
+            let car = new Vehicle();
+            car.move = function() {
+                return 'Car';
+            };
+
+            let brokenCar = new Vehicle();
+            
+            //Act
+            let carMove = car.move();
+            let lorryMove = lorry.move();
+            let brokenCarMove = brokenCar.move();
+
+            //Assert
+            assert.equal('Car', carMove);
+            assert.equal('Lorry', lorryMove);
+            assert.equal('Vehicle', brokenCarMove);      
+            
+        });
+    })
 });
 
