@@ -1,5 +1,5 @@
 {
-  "name": " ",
+  "name": "roman-numerals-andrew",
   "version": "1.0.0",
   "description": "Generates roman numerals as per BBC specification",
   "main": "romanNumerals.js",

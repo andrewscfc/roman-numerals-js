@@ -1,0 +1,16 @@
+{
+  "name": "coding-challenges",
+  "version": "1.0.0",
+  "description": "Generates roman numerals as per BBC specification",
+  "main": "binary-search.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^4.0.1",
+    "should": "latest"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Andrew Bennett",
+  "license": "ISC"
+}
